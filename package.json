@@ -1,0 +1,44 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "Pawsome MVP - Minimum Viable Product App",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon server/index.js -w",
+    "build:dev": "webpack --mode=development -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eringrisham/MVP.git"
+  },
+  "author": "Erin Grisham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eringrisham/MVP/issues"
+  },
+  "homepage": "https://github.com/eringrisham/MVP#readme",
+  "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "express": "^4.17.1",
+    "material-ui": "^0.20.2",
+    "mongoose": "^5.13.7",
+    "nodemon": "^2.0.12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
+  }
+}
