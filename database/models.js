@@ -1,6 +1,6 @@
 const Dog = require('./schema.js');
 
-console.log(Dog.find({}));
+
 
 const models = {
 
