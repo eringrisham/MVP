@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './app.css';
 import BackgroundImage from '../../../images/1405992047-vector.svg';
@@ -8,14 +8,22 @@ import useStyles from './styles';
 
 const App = () => {
 	const classes = useStyles();
-	// <>
-	// 	<div className='AppTitle Overlay'>
-	// 		Pawsome
-	// 	</div>
-	// 	<div className='Body'>
-	// 		<img src={BackgroundImage} alt='Paw-print background image'/>
-	// 	</div>
-  // </>
+
+	let [dogs, fetchAllDogs] = useState();
+
+	useEffect(async () => {
+		const result = await axios(
+			'http://localhost:3014/dogs'
+		);
+		fetchAllDogs(result.data);
+	}, []);
+
+	//axios.get('http://localhost:3014/dogs').then(data => {
+
+	//})
+
+
+
 	return (
     <Container maxwidth='lg'>
       <AppBar className={classes.appBar} position='static' color='inherit'>

@@ -10,6 +10,15 @@ const models = {
 			return data;
 		})
 		.catch(err => console.log('Error retrieving single dog data from database: ', err));
+	},
+
+	retrieveAllDogs: () => {
+		return Dog.find({}).exec()
+		.then(data => {
+			console.log(data);
+			return data;
+		})
+		.catch(err => console.log('Error retrieving all dogs from database: ', err));
 	}
 
 	// postOneDog: (dogPost) => {
@@ -22,6 +31,7 @@ const models = {
 
 module.exports = models;
 
+//models.retrieveAllDogs();
 
 // console.log(models.postOneDog(
 // 	{
