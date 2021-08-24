@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import axios from 'axios';
 import './app.css';
 import BackgroundImage from '../../../images/1405992047-vector.svg';
@@ -13,20 +19,12 @@ const App = () => {
 
 	let [dogs, fetchAllDogs] = useState();
 
-
 	useEffect(async () => {
 		const result = await axios(
 			'http://localhost:3014/dogs'
 		);
 		fetchAllDogs(result.data);
 	}, []);
-
-
-	//axios.get('http://localhost:3014/dogs').then(data => {
-
-	//})
-
-
 
 	return (
     <Container maxwidth='lg'>
@@ -46,6 +44,27 @@ const App = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+					<Router>
+      <div>
+        <nav>
+              <Link to="/">Home</Link>
+							<br/>
+              <Link to="/favorites">Favorites</Link>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/favorites">
+            <About />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+
 			</AppBar>
 			{/* <div className='Body'>
 	 		<img src={BackgroundImage} alt='Paw-print background image'/>
@@ -57,8 +76,8 @@ const App = () => {
 							{dogs ?
 							dogs.map((dog, i) => (
 								dog.name !== 'African Hunting Dog' ?
-								<Grid item xs={4} >
-								<DogCards key={i} dog={dog}/>
+								<Grid item key={i} xs={4} >
+								  <DogCards dog={dog}/>
 								</Grid> : null
 							))
 							: null}
@@ -74,5 +93,17 @@ const App = () => {
 
 	)
 };
+
+// function Home() {
+// 	return (
+// 		null
+//     // <App></App>
+// 	)
+
+// }
+
+function About() {
+  return null;
+}
 
 export default App;
