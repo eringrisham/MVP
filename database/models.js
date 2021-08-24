@@ -6,7 +6,7 @@ const models = {
 	findOneDog: (dogName) => {
 		return Dog.findOne({name: new RegExp(dogName, 'i')}).exec()
 		.then(data => {
-			console.log(data);
+			//console.log(data);
 			return data;
 		})
 		.catch(err => console.log('Error retrieving single dog data from database: ', err));
@@ -15,7 +15,7 @@ const models = {
 	retrieveAllDogs: () => {
 		return Dog.find({}).exec()
 		.then(data => {
-			console.log(data);
+			//console.log(data);
 			return data;
 		})
 		.catch(err => console.log('Error retrieving all dogs from database: ', err));

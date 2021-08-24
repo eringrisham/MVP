@@ -1,77 +1,73 @@
 import React, { useState } from 'react';
 import useStyles from './styles.js';
-import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from '@material-ui/core';
+import { AppBar, Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, Container, IconButton, Typography, Grow, Grid, InputBase  } from '@material-ui/core';
 
 import clsx from 'clsx';
+import { Link } from "react-router-dom";
 
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Favorite from './favorite.jsx';
+import DogLogo from '../../../../images/shutterstock_1518711302.svg'
+import SearchIcon from '@material-ui/icons/Search';
 
-const Favorites = ({ faveDogs }) => {
+const Favorites = ({ favorites }) => {
+	console.log('FAVE DOGS:', favorites);
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
-
-	const [favorites, setFavorites] = useState();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        action={
-          <IconButton aria-label="remove from favorites">
-            <FavoriteIcon />
-          </IconButton>
-        }
-        title={faveDogs.name}
-        subheader={faveDogs.breed_group}
-				titleTypographyProps={{variant:'h5'}}
-      />
-      <CardMedia
-        className={classes.media}
-        image={faveDogs.image_url}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Temperament: {faveDogs.temperament}
-					<br/>
-					Weight: {faveDogs.weight} lb.
-					<br/>
-          Height: {faveDogs.height} in.
+    <>
+			<Container maxwidth='lg'>
+				<AppBar className={classes.appBar} position='static' color='inherit'>
+					<Typography className={classes.heading} variant='h2' align='center'>Pawsome</Typography>
+					<img className={classes.image} src={DogLogo} alt='memories' height='60'/>
+					<div className={classes.search}>
+							<div className={classes.searchIcon}>
+								<SearchIcon />
+							</div>
+							<InputBase
+								placeholder="Search…"
+								classes={{
+									root: classes.inputRoot,
+									input: classes.inputInput,
+								}}
+								inputProps={{ 'aria-label': 'search' }}
+							/>
+						</div>
+						<Typography variant="body2" color="textSecondary">
+								<Link to="/">Home</Link>
+								<br/>
+								<Link to="/favorites">Favorites</Link>
+						</Typography>
 
+				</AppBar>
+				<Grow in>
+					<Container>
+						<Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
 
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Notes:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+								{favorites ?
+								favorites.map((dog, i) => (
+									<Grid item key={i} xs={4} >
+										<Favorite dog={dog}/>
+									</Grid>
+								))
+								: null}
+
+							{/* <Grid item xs={12} sm={4}> */}
+								{/* <Form currentID={currentID} setCurrentID={setCurrentID} /> */}
+							{/* </Grid> */}
+						</Grid>
+					</Container>
+				</Grow>
+			</Container>
+		</>
   );
 }
 

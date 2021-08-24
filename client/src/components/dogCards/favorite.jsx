@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import useStyles from './styles.js';
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from '@material-ui/core';
+
 import clsx from 'clsx';
+
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Favorites from './favorites.jsx';
 
-let faveContext;
-
-const DogCards = ({ dog, setFavorites, favorites }) => {
+const Favorite = ({ dog }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
 
@@ -18,37 +17,11 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
     setExpanded(!expanded);
   };
 
-  // let arr = [];
-
-	// let filteredFaves = favorites.forEach(fave => {
-	// 	if (arr.indexOf(fave) === -1) {
-	// 		arr.push(fave);
-	// 	}
-	// });
-
-  // favorites = arr;
-
-  // const storage = window.localStorage.getItem(1);
-  // const parsedStorage = JSON.parse(storage);
-
   return (
-  <>
     <Card className={classes.root}>
       <CardHeader
         action={
-          <IconButton
-
-            data-myattr={dog.name}
-            onClick={(e) => {
-
-              // console.log('clicked!', e.currentTarget.getAttribute("data-myattr"));
-              // console.log(favorites);
-              // console.log(favorites.indexOf(dog) !== -1)
-              favorites.indexOf(dog) === -1 ?
-              setFavorites([...favorites, dog])
-              : null;
-            }}
-            aria-label="add to favorites">
+          <IconButton aria-label="remove from favorites">
             <FavoriteIcon />
           </IconButton>
         }
@@ -59,7 +32,7 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
       <CardMedia
         className={classes.media}
         image={dog.image_url}
-        title="Dog photo"
+        title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -97,11 +70,7 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
         </CardContent>
       </Collapse>
     </Card>
-
-  </>
   );
 }
 
-export const newContext = faveContext;
-
-export default DogCards;
+export default Favorite;

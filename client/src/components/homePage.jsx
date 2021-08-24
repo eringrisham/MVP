@@ -14,7 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 import DogCards from './dogCards/dogCards.jsx';
 
-const Home = () => {
+const Home = ({ favorites, setFavorites }) => {
 	const classes = useStyles();
 
 	let [dogs, fetchAllDogs] = useState();
@@ -49,6 +49,8 @@ const Home = () => {
 						<Link to="/">Home</Link>
 						<br/>
 						<Link to="/favorites">Favorites</Link>
+						<br/>
+						<Link to="/add">Add Dogs</Link>
 				</Typography>
 
 		</AppBar>
@@ -60,7 +62,7 @@ const Home = () => {
 						dogs.map((dog, i) => (
 							dog.name !== 'African Hunting Dog' ?
 							<Grid item key={i} xs={4} >
-								<DogCards dog={dog}/>
+								<DogCards dog={dog} favorites={favorites} setFavorites={setFavorites}/>
 							</Grid> : null
 						))
 						: null}
