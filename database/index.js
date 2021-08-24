@@ -49,3 +49,4 @@ const saveAll = (dogs) => {
 }
 
 module.exports.saveAll = saveAll;
+module.exports.Dog = Dog;

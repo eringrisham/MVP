@@ -15,14 +15,11 @@ const getDogData = () => {
 
   return axios.get(options.url, options.headers)
     .then(({data}) => {
-
 			saveAll(data);
-
     })
     .catch(err => {
       console.log('Error retrieving all dog data to put in database at getDogAPIData: ', err)
     });
-
 }
 getDogData();
 
