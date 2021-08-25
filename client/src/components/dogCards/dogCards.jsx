@@ -69,11 +69,18 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Notes:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
+        <Typography variant='h6'>More Information:</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Life Span: {dog.life_span}
+					<br/>
+          {dog.bred_for ? `Bred For: ${dog.bred_for}` : null}
+					<br/>
+          {dog.origin ? `Origin(s): ${dog.origin}` : null}
+          <br/>
+          <br/>
+        </Typography>
+          <Typography variant='h6'>Your Notes:</Typography>
+          <Form dogName={dog.name}/>
         </CardContent>
       </Collapse>
     </Card>

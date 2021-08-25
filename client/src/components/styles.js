@@ -81,7 +81,5 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
-    marginRight: '50%',
-    marginLeft: '10%'
-  },
+  }
 }));

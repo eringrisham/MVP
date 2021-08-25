@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useStyles from './styles';
+import useStyles from './styles.js';
 import { AppBar, Button, Container, InputBase, Paper, TextField, Typography } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import DogLogo from '../../../images/shutterstock_1518711302.svg'
@@ -33,7 +33,7 @@ const Form = ({ }) => {
 	// 	    };
 
 	const [ postData, setPostData ] = useState({
-		user: '',
+		yourName: '',
 		title: '',
 		message: '',
 		tags: '',
@@ -64,7 +64,7 @@ const Form = ({ }) => {
 	const clear = () => {
     //setCurrentID(null);
 		setPostData({
-			user: '',
+			yourName: '',
 			title: '',
 			message: '',
 			tags: '',
@@ -104,12 +104,12 @@ const Form = ({ }) => {
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
 				<Typography style={{marginRight: '50%', marginLeft: '10%'}} variant='h5'>Add a dog!</Typography>
 				<TextField
-				name='creator'
+				name='your name'
 				variant='outlined'
-				label='Creator'
+				label='Your Name'
 				fullWidth
-				value={postData.creator}
-				onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
+				value={postData.yourName}
+				onChange={(e) => setPostData({ ...postData, yourName: e.target.value })}
 				/>
         <TextField
 				name='title'
@@ -140,8 +140,8 @@ const Form = ({ }) => {
             setPostData({ ...postData, selectedFile: base64 })
 					}} />
 				</div>
-				<Button className={classes.buttonSubmit} style={{marginRight: '50%', marginLeft: '10%'}}variant='contained' color='primary' size='large' type='submit'>Submit</Button>
-				<Button display='inline' style={{marginRight: '50%', marginLeft: '10%'}} variant='contained' color='secondary' size='small' onClick={clear}>Clear</Button>
+				<Button display='inline' className={classes.buttonSubmit} variant='contained' color='primary' size='large' type='submit'>Submit</Button>
+				<Button display='inline' style={{marginRight: '55%'}} variant='contained' color='secondary' size='small' onClick={clear}>Clear</Button>
 			</form>
 		</Paper>
 		</>
