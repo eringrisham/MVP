@@ -13,11 +13,14 @@ import { Container, AppBar, Typography, Grow, Grid, InputBase } from '@material-
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 import DogCards from './dogCards/dogCards.jsx';
+import { Pagination } from '@material-ui/lab';
 
 const Home = ({ favorites, setFavorites }) => {
 	const classes = useStyles();
 
-	let [dogs, fetchAllDogs] = useState();
+	const [dogs, fetchAllDogs] = useState();
+	const [currentPage, setCurrentPage] = useState(1);
+	const [postsPerPage] = useState(30);
 
 	useEffect(async () => {
 		const result = await axios(
@@ -25,6 +28,23 @@ const Home = ({ favorites, setFavorites }) => {
 		);
 		fetchAllDogs(result.data);
 	}, []);
+
+	//change page
+	const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+	}
+
+	//get current posts
+	const indexOfLastPost = currentPage * postsPerPage;
+	const indexOfFirstPost = indexOfLastPost - postsPerPage;
+	let totalPosts;
+	let currentPosts;
+	if (dogs) {
+		totalPosts = dogs.length;
+		currentPosts = dogs.slice(indexOfFirstPost, indexOfLastPost);
+	}
+
+	const numberOfPages = Math.ceil(totalPosts/postsPerPage);
 
 	return (
 <>
@@ -59,17 +79,19 @@ const Home = ({ favorites, setFavorites }) => {
 				<Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
 
 						{dogs ?
-						dogs.map((dog, i) => (
+						currentPosts.map((dog, i) => (
 							dog.name !== 'African Hunting Dog' ?
 							<Grid item key={i} xs={4} >
 								<DogCards dog={dog} favorites={favorites} setFavorites={setFavorites}/>
 							</Grid> : null
 						))
 						: null}
-
-					{/* <Grid item xs={12} sm={4}> */}
-						{/* <Form currentID={currentID} setCurrentID={setCurrentID} /> */}
-					{/* </Grid> */}
+			<Pagination
+				onClick={() => paginate(currentPage + 1)}
+				count={numberOfPages}
+				style={{marginTop: '50px', marginBottom: '50px', left: '10%', top: '90%'}}
+				color="primary"
+				size="large"/>
 				</Grid>
 			</Container>
 		</Grow>

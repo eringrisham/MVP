@@ -42,9 +42,11 @@ const Favorites = ({ favorites }) => {
 							/>
 						</div>
 						<Typography variant="body2" color="textSecondary">
-								<Link to="/">Home</Link>
-								<br/>
-								<Link to="/favorites">Favorites</Link>
+							<Link to="/">Home</Link>
+							<br/>
+							<Link to="/favorites">Favorites</Link>
+							<br/>
+						  <Link to="/add">Add Dogs</Link>
 						</Typography>
 
 				</AppBar>
@@ -59,10 +61,6 @@ const Favorites = ({ favorites }) => {
 									</Grid>
 								))
 								: null}
-
-							{/* <Grid item xs={12} sm={4}> */}
-								{/* <Form currentID={currentID} setCurrentID={setCurrentID} /> */}
-							{/* </Grid> */}
 						</Grid>
 					</Container>
 				</Grow>

@@ -54,5 +54,34 @@ export default makeStyles((theme) => ({
         width: '20ch',
       },
     },
-  }
+  },
+
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      marginRight: '50%',
+      marginLeft: '10%'
+    },
+  },
+  paper: {
+    padding: theme.spacing(2)
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginRight: '50%',
+    marginLeft: '10%'
+  },
+  fileInput: {
+    width: '97%',
+    margin: '10px 0',
+    marginRight: '50%',
+    marginLeft: '10%'
+  },
+  buttonSubmit: {
+    marginBottom: 10,
+    marginRight: '50%',
+    marginLeft: '10%'
+  },
 }));

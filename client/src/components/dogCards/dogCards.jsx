@@ -8,28 +8,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Favorites from './favorites.jsx';
 
-let faveContext;
-
 const DogCards = ({ dog, setFavorites, favorites }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
+  const [hover, setHover]= useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  // let arr = [];
-
-	// let filteredFaves = favorites.forEach(fave => {
-	// 	if (arr.indexOf(fave) === -1) {
-	// 		arr.push(fave);
-	// 	}
-	// });
-
-  // favorites = arr;
-
-  // const storage = window.localStorage.getItem(1);
-  // const parsedStorage = JSON.parse(storage);
 
   return (
   <>
@@ -37,29 +23,24 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
       <CardHeader
         action={
           <IconButton
-
             data-myattr={dog.name}
             onClick={(e) => {
-
-              // console.log('clicked!', e.currentTarget.getAttribute("data-myattr"));
-              // console.log(favorites);
-              // console.log(favorites.indexOf(dog) !== -1)
               favorites.indexOf(dog) === -1 ?
               setFavorites([...favorites, dog])
               : null;
             }}
             aria-label="add to favorites">
             <FavoriteIcon />
-          </IconButton>
-        }
-        title={dog.name}
+          </IconButton>}
+        title={dog.name.length > 20 ? dog.name.slice(0, 20) + '...' : dog.name}
         subheader={dog.breed_group}
 				titleTypographyProps={{variant:'h5'}}
-      />
+      >
+      </CardHeader>
       <CardMedia
         className={classes.media}
         image={dog.image_url}
-        title="Dog photo"
+        title={dog.name}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -97,11 +78,8 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
         </CardContent>
       </Collapse>
     </Card>
-
   </>
   );
 }
-
-export const newContext = faveContext;
 
 export default DogCards;
