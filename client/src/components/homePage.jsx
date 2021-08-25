@@ -14,6 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 import DogCards from './dogCards/dogCards.jsx';
 import { Pagination } from '@material-ui/lab';
+import ScrollArrow from './scrollUp.jsx';
 
 const Home = ({ favorites, setFavorites }) => {
 	const classes = useStyles();
@@ -45,6 +46,11 @@ const Home = ({ favorites, setFavorites }) => {
 	}
 
 	const numberOfPages = Math.ceil(totalPosts/postsPerPage);
+
+	//scroll to top
+	const scrollTop = () =>{
+		window.scrollTo({top: 0, behavior: 'smooth'});
+  };
 
 	return (
 		<>
@@ -101,6 +107,7 @@ const Home = ({ favorites, setFavorites }) => {
 					<img className={classes.image} src={DogLogo} alt='memories' height='60' style={{marginLeft: '20px', marginRight: '20px'}}/>
 
 					<Typography className={classes.heading} variant='h3' align='center'>Created by Erin Grisham</Typography>
+          <ScrollArrow/>
 				</AppBar>
 			</Container>
 		</>
