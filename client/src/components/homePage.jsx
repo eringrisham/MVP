@@ -95,6 +95,14 @@ const Home = ({ favorites, setFavorites }) => {
 					</Container>
 				</Grow>
 			</Container>
+			<Container maxwidth='lg'>
+				<AppBar className={classes.appBar} position='static' color='inherit'>
+					<Typography className={classes.heading} variant='h3' align='center'>Pawsome</Typography>
+					<img className={classes.image} src={DogLogo} alt='memories' height='60' style={{marginLeft: '20px', marginRight: '20px'}}/>
+
+					<Typography className={classes.heading} variant='h3' align='center'>Created by Erin Grisham</Typography>
+				</AppBar>
+			</Container>
 		</>
 	)
 };

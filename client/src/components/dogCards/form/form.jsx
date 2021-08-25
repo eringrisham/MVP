@@ -39,7 +39,7 @@ const Form = ({ dogName }) => {
 				variant='outlined'
 				label='Notes'
 				fullWidth
-				value={formData.notes || ''}
+				//value={formData.formNotes}
 				onChange={(e) => {
 					console.log('THIS IS E!!!', e);
           setFormData({ ...formData, formNotes: e.target.value});
