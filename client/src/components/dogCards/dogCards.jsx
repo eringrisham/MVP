@@ -7,11 +7,12 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Favorites from './favorites.jsx';
+import Form from './form/form.jsx';
 
 const DogCards = ({ dog, setFavorites, favorites }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
-  const [hover, setHover]= useState(false);
+  //const [hover, setHover]= useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -49,8 +50,6 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
 					Weight: {dog.weight} lb.
 					<br/>
           Height: {dog.height} in.
-
-
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

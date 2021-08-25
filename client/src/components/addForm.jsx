@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import useStyles from './styles';
-import { Container, AppBar, TextField, Button, Typography, Paper, InputBase } from '@material-ui/core';
+import { AppBar, Button, Container, InputBase, Paper, TextField, Typography } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import DogLogo from '../../../images/shutterstock_1518711302.svg'
 import SearchIcon from '@material-ui/icons/Search';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const Form = ({ }) => {
 

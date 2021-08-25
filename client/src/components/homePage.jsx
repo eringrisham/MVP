@@ -47,56 +47,55 @@ const Home = ({ favorites, setFavorites }) => {
 	const numberOfPages = Math.ceil(totalPosts/postsPerPage);
 
 	return (
-<>
-  <Container maxwidth='lg'>
-		<AppBar className={classes.appBar} position='static' color='inherit'>
-			<Typography className={classes.heading} variant='h2' align='center'>Pawsome</Typography>
-			<img className={classes.image} src={DogLogo} alt='memories' height='60'/>
-			<div className={classes.search}>
-					<div className={classes.searchIcon}>
-						<SearchIcon />
-					</div>
-					<InputBase
-						placeholder="Search…"
-						classes={{
-							root: classes.inputRoot,
-							input: classes.inputInput,
-						}}
-						inputProps={{ 'aria-label': 'search' }}
-					/>
-				</div>
-				<Typography variant="body2" color="textSecondary">
-						<Link to="/">Home</Link>
-						<br/>
-						<Link to="/favorites">Favorites</Link>
-						<br/>
-						<Link to="/add">Add Dogs</Link>
-				</Typography>
-
-		</AppBar>
-		<Grow in>
-			<Container>
-				<Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
-
-						{dogs ?
-						currentPosts.map((dog, i) => (
-							dog.name !== 'African Hunting Dog' ?
-							<Grid item key={i} xs={4} >
-								<DogCards dog={dog} favorites={favorites} setFavorites={setFavorites}/>
-							</Grid> : null
-						))
-						: null}
-			<Pagination
-				onClick={() => paginate(currentPage + 1)}
-				count={numberOfPages}
-				style={{marginTop: '50px', marginBottom: '50px', left: '10%', top: '90%'}}
-				color="primary"
-				size="large"/>
-				</Grid>
+		<>
+			<Container maxwidth='lg'>
+				<AppBar className={classes.appBar} position='static' color='inherit'>
+					<Typography className={classes.heading} variant='h2' align='center'>Pawsome</Typography>
+					<img className={classes.image} src={DogLogo} alt='memories' height='60'/>
+					<div className={classes.search}>
+							<div className={classes.searchIcon}>
+								<SearchIcon />
+							</div>
+							<InputBase
+								placeholder="Search…"
+								classes={{
+									root: classes.inputRoot,
+									input: classes.inputInput,
+								}}
+								inputProps={{ 'aria-label': 'search' }}
+							/>
+						</div>
+						<Typography variant="body2" color="textSecondary">
+								<Link to="/">Home</Link>
+								<br/>
+								<Link to="/favorites">Favorites</Link>
+								<br/>
+								<Link to="/add">Add Dogs</Link>
+						</Typography>
+				</AppBar>
+				<Grow in>
+					<Container>
+						<Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
+								{dogs ?
+								currentPosts.map((dog, i) => (
+									dog.name !== 'African Hunting Dog' ?
+									<Grid item key={i} xs={4} >
+										<DogCards dog={dog} favorites={favorites} setFavorites={setFavorites}/>
+									</Grid> : null
+								))
+								: null}
+					<Pagination
+						onChange={(event, val) => paginate(val)}
+						count={numberOfPages}
+						page={currentPage}
+						style={{marginTop: '50px', marginBottom: '50px', left: '10%', top: '90%'}}
+						color="primary"
+						size="large"/>
+						</Grid>
+					</Container>
+				</Grow>
 			</Container>
-		</Grow>
-	</Container>
-</>
+		</>
 	)
 };
 
