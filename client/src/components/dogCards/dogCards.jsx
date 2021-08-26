@@ -9,7 +9,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Favorites from './favorites.jsx';
 import Form from './form/form.jsx';
 
-const DogCards = ({ dog }) => {
+const DogCards = ({ dog, favorites, setFavorites }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
 
