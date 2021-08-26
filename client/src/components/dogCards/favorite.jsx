@@ -18,6 +18,12 @@ const Favorite = ({ dog }) => {
     setExpanded(!expanded);
   };
 
+	const addDogNotes = (e, notes) => {
+    e.preventDefault();
+    dog.notes = notes;
+    return dog;
+  }
+
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -74,7 +80,7 @@ const Favorite = ({ dog }) => {
           <br/>
         </Typography>
           <Typography variant='h6'>Your Notes:</Typography>
-          <Form dogName={dog.name}/>
+          <Form dog={dog} addDogNotes={addDogNotes}/>
         </CardContent>
       </Collapse>
     </Card>

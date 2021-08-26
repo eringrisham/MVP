@@ -1,54 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useStyles from './styles.js';
-import { AppBar, Button, Container, InputBase, Paper, TextField, Typography } from '@material-ui/core';
+import { AppBar, Button, TextField, Typography } from '@material-ui/core';
+import './form.css';
 
-const Form = ({ dogName }) => {
+const Form = ({ dog, addDogNotes }) => {
+
+	console.log('DOGOOOOOOOOO', dog);
 
 	const classes = useStyles();
 
-	const [ noteData, setNoteData ] = useState({
-		dogName: dogName,
-		notes: ''
-	})
-
-	const [ formData, setFormData ] = useState({
-		formNotes: ''
-	})
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		console.log('TARGET', e.target);
-		setNoteData({ ...noteData, notes: e.target.value });
-
-    clear();
-	}
+	const [formData, updateFormData] = useState({dogName: dog.name, notes: ''});
 
 	const clear = () => {
 
-		setFormData({
+		updateFormData({
 			notes: ''
 	  })
 	}
 
+	const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim()
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('FORM DATA: ', formData);
+		addDogNotes(e, formData.notes);
+
+		clear();
+
+  };
+
+
+
 	return (
 		<>
-		<form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+		  <Typography variant="h6" color="textSecondary">
+		    {dog.notes ? <div className='new-line'>{dog.notes}</div> : null}
+      </Typography>
+		<form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}
+		onSubmit={handleSubmit}
+			>
 				<TextField
-				name='your notes'
+				name='notes'
 				variant='outlined'
 				label='Notes'
 				fullWidth
-				//value={formData.formNotes}
-				onChange={(e) => {
-					console.log('THIS IS E!!!', e);
-          setFormData({ ...formData, formNotes: e.target.value});
-					setNoteData({ ...noteData, notes: e.target.value });
-				}}
-				/>
-
-				<Button display='inline' className={classes.buttonSubmit} variant='contained' color='primary' size='small' type='submit'>Submit</Button>
-				<Button display='inline' variant='contained' color='secondary' size='small' onClick={clear}>Clear</Button>
+			 	onChange={handleChange}
+			/>
+				<Button
+				onClick={handleSubmit}
+				// onSubmit={handleSubmit}
+				display='inline' className={classes.buttonSubmit} variant='contained' color='primary' size='small' type='submit'>Submit</Button>
+				<Button display='inline' variant='contained' color='secondary' size='small'
+				onClick={clear}
+				>Clear</Button>
 			</form>
 		</>
 	)

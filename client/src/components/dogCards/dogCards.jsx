@@ -9,14 +9,21 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Favorites from './favorites.jsx';
 import Form from './form/form.jsx';
 
-const DogCards = ({ dog, setFavorites, favorites }) => {
+const DogCards = ({ dog }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
-  //const [hover, setHover]= useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const addDogNotes = (e, notes) => {
+    e.preventDefault();
+    dog.notes = notes;
+    return dog;
+  }
+
+  console.log('NOTES IN dog cards: ', dog.notes);
 
   return (
   <>
@@ -80,7 +87,10 @@ const DogCards = ({ dog, setFavorites, favorites }) => {
           <br/>
         </Typography>
           <Typography variant='h6'>Your Notes:</Typography>
-          <Form dogName={dog.name}/>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {dog.notes ? dog.notes : null}
+          </Typography>
+          <Form dog={dog} addDogNotes={addDogNotes}/>
         </CardContent>
       </Collapse>
     </Card>

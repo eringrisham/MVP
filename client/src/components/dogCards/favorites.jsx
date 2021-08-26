@@ -13,7 +13,7 @@ import Favorite from './favorite.jsx';
 import DogLogo from '../../../../images/shutterstock_1518711302.svg'
 import SearchIcon from '@material-ui/icons/Search';
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ favorites, addDogNotes }) => {
 	console.log('FAVE DOGS:', favorites);
 	const classes = useStyles();
 	const [expanded, setExpanded] = useState(false);
@@ -57,7 +57,7 @@ const Favorites = ({ favorites }) => {
 								{favorites ?
 								favorites.map((dog, i) => (
 									<Grid item key={i} xs={4} >
-										<Favorite dog={dog}/>
+										<Favorite dog={dog} addDogNotes={addDogNotes}/>
 									</Grid>
 								))
 								: null}

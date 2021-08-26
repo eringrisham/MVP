@@ -8,30 +8,6 @@ import { Link } from "react-router-dom";
 
 const Form = ({ }) => {
 
-	// const post = {
-	// 	    "bred_for": "Partying",
-	// 	    "breed_group": "Toy",
-	// 	    "height": {
-	// 	      "imperial": "9 - 11.5",
-	// 	      "metric": "23 - 29"
-	// 	    },
-	// 	    "id": 1,
-	// 	    "image": {
-	// 	      "height": 1199,
-	// 	      "id": "BJa4kxc4X",
-	// 	      "url": "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg",
-	// 	      "width": 1600
-	// 	    },
-	// 	    "life_span": "10 - 12 years",
-	// 	    "name": "Dave",
-	// 	    "origin": "The Moon",
-	// 	    "reference_image_id": "BJa4kxc4X",
-	// 	    "temperament": "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-	// 	    "weight": {
-	// 	      "imperial": "6 - 13",
-	// 	      "metric": "3 - 6"
-	// 	    };
-
 	const [ postData, setPostData ] = useState({
 		yourName: '',
 		title: '',
@@ -40,29 +16,14 @@ const Form = ({ }) => {
 		selectedFile: ''
 	})
 
-	//const post = useSelector((state) => currentID ? state.posts.find((p) => p._id === currentID) : null);
-
 	const classes = useStyles();
-	//const dispatch = useDispatch();
-
-	// useEffect(() => {
-  //   if (post) {
-	// 		setPostData(post);
-	// 	}
-	// }, [post])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// if (currentID) {
-		// 	dispatch(updatePost(currentID, postData));
-		// } else {
-		// 	dispatch(createPost(postData));
-		// }
     clear();
 	}
 
 	const clear = () => {
-    //setCurrentID(null);
 		setPostData({
 			yourName: '',
 			title: '',
