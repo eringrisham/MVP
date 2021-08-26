@@ -1,6 +1,5 @@
 const { Dog, saveAll } = require('./index.js');
 
-
 const models = {
 
 	findOneDog: (dogName) => {

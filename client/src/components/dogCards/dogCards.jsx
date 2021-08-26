@@ -86,11 +86,8 @@ const DogCards = ({ dog }) => {
           <br/>
           <br/>
         </Typography>
-          <Typography variant='h6'>Your Notes:</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {dog.notes ? dog.notes : null}
-          </Typography>
-          <Form dog={dog} addDogNotes={addDogNotes}/>
+        <Typography variant='h6'>Your Notes:</Typography>
+        <Form dog={dog} addDogNotes={addDogNotes}/>
         </CardContent>
       </Collapse>
     </Card>

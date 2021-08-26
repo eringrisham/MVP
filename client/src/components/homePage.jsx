@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
-import './app.css';
-import BackgroundImage from '../../../images/1405992047-vector.svg';
 import DogLogo from '../../../images/shutterstock_1518711302.svg'
 import { Container, AppBar, Typography, Grow, Grid, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import useStyles from './styles.js';
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from '@material-ui/core';
-
 import clsx from 'clsx';
-
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -48,8 +46,6 @@ const Favorite = ({ dog }) => {
 					Weight: {dog.weight} lb.
 					<br/>
           Height: {dog.height} in.
-
-
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

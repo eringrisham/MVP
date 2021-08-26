@@ -23,7 +23,6 @@ const Favorites = ({ favorites, addDogNotes }) => {
   };
 
   return (
-    <>
 			<Container maxwidth='lg'>
 				<AppBar className={classes.appBar} position='static' color='inherit'>
 					<Typography className={classes.heading} variant='h2' align='center'>Pawsome</Typography>
@@ -48,12 +47,10 @@ const Favorites = ({ favorites, addDogNotes }) => {
 							<br/>
 						  <Link to="/add">Add Dogs</Link>
 						</Typography>
-
 				</AppBar>
 				<Grow in>
 					<Container>
 						<Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
-
 								{favorites ?
 								favorites.map((dog, i) => (
 									<Grid item key={i} xs={4} >
@@ -65,7 +62,6 @@ const Favorites = ({ favorites, addDogNotes }) => {
 					</Container>
 				</Grow>
 			</Container>
-		</>
   );
 }
 

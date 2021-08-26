@@ -3,12 +3,11 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import './scroll.css';
 import { Typography } from '@material-ui/core';
 
-
 const ScrollArrow = () =>{
 
 	const [hover, setHover] = useState(false);
 
-  const [showScroll, setShowScroll] = useState(false)
+  const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 400){
@@ -22,7 +21,7 @@ const ScrollArrow = () =>{
     window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
-  window.addEventListener('scroll', checkScrollTop)
+  window.addEventListener('scroll', checkScrollTop);
 
   return (
 		<>
